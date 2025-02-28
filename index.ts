@@ -7,32 +7,35 @@ const assetMap = JSON.parse(
 );
 
 const client = new Client({
-  url: "http://localhost:8080/v1/graphql",
+  url: "https://indexer.hyperindex.xyz/bb34868/v1/graphql",
   exchanges: [fetchExchange],
 });
 
 const TELEGRAM_BOT_URL = "https://dieselbot.onrender.com/echo";
 
-let lastTimestamp = 1740766775;
+let lastTimestamp = 1740768299;
 
 let ETH_ID =
   "0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07";
 
 async function queryDB(query: string, variables: any) {
   //   if (!process.env.GRAPHQL_URL) {
-  //     throw new Error("http://localhost:8080/v1/graphql");
+  //     throw new Error("https://indexer.hyperindex.xyz/bb34868/v1/graphql");
   //   }
 
-  const response = await fetch("http://localhost:8080/v1/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
+  const response = await fetch(
+    "https://indexer.hyperindex.xyz/bb34868/v1/graphql",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    }
+  );
 
   const data = await response.json();
 
