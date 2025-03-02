@@ -7,7 +7,7 @@ const assetMap = JSON.parse(
 );
 
 const client = new Client({
-  url: "https://indexer.hyperindex.xyz/bb34868/v1/graphql",
+  url: "https://indexer.hyperindex.xyz/df36d46/v1/graphql",
   exchanges: [fetchExchange],
 });
 
@@ -20,11 +20,11 @@ let ETH_ID =
 
 async function queryDB(query: string, variables: any) {
   //   if (!process.env.GRAPHQL_URL) {
-  //     throw new Error("https://indexer.hyperindex.xyz/bb34868/v1/graphql");
+  //     throw new Error("https://indexer.hyperindex.xyz/df36d46/v1/graphql");
   //   }
 
   const response = await fetch(
-    "https://indexer.hyperindex.xyz/bb34868/v1/graphql",
+    "https://indexer.hyperindex.xyz/df36d46/v1/graphql",
     {
       method: "POST",
       headers: {
