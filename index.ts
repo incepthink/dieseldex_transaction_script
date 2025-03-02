@@ -13,6 +13,9 @@ const client = new Client({
 
 const TELEGRAM_BOT_URL = "https://dieselbot.onrender.com/echo";
 
+const PSYCHO_ID =
+  "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e";
+
 let lastTimestamp = 1740768214;
 
 let ETH_ID =
@@ -145,6 +148,15 @@ const monitorTransactions = async () => {
 
         if (data?.eth_in !== 0 && data?.asset_out !== 0) {
           await sendToTelegramBot(data);
+
+          if (asset_0 === PSYCHO_ID || asset_1 === PSYCHO_ID) {
+            const botCallPsycho = await axios.post(
+              "https://dieselbot.onrender.com/echo-bot2",
+              {
+                data,
+              }
+            );
+          }
         }
       } else {
         const [asset_0, asset_1, is_stable] = transaction.pool_id.split("_");
@@ -160,14 +172,14 @@ const monitorTransactions = async () => {
         if (data?.eth_in !== 0 && data?.asset_out !== 0) {
           await sendToTelegramBot(data);
 
-          //   if (asset_0 === PSYCHO_ID || asset_1 === PSYCHO_ID) {
-          //     const botCallPsycho = await axios.post(
-          //       "https://dieselbot.onrender.com/echo-bot2",
-          //       {
-          //         data,
-          //       }
-          //     );
-          //   }
+          if (asset_0 === PSYCHO_ID || asset_1 === PSYCHO_ID) {
+            const botCallPsycho = await axios.post(
+              "https://dieselbot.onrender.com/echo-bot2",
+              {
+                data,
+              }
+            );
+          }
         }
       }
       lastTimestamp = transaction.time;
